@@ -22,10 +22,21 @@ client.on('message', async msg => {
     const pubgQueryFPP = msg.content.indexOf('!pubg') === 0 ? true : false
     const pubgQueryTPP = msg.content.indexOf('!TPPpubg') === 0 ? true : false
 
-    if (msg.content.toLowerCase() === "help") {
-        msg.reply('Type "!pubg:[Your PUBG name]" to see some FPP statistics. Example: !pubg:Rip_Torn')
-        msg.reply('Type "!TPPpubg:[Your PUBG name]" to see some TPP statistics. Example: !TPPpubg:Rip_Torn')
-        msg.reply('Type !commands to see other commands.')
+    if (msg.content.toLowerCase() === 'help') {
+        const message = 
+        `
+        Type "!pubg:[Your PUBG name]" to see some FPP statistics.
+        Example: !pubg:Rip_Torn
+        
+        Type "!TPPpubg:[Your PUBG name]" to see some TPP statistics.
+        Example: !TPPpubg:Rip_Torn
+       
+        Type "!commands" to see other commands.'
+        `
+        const embed = new RichEmbed()
+        .setColor(008000)
+        .setDescription(message)
+        msg.channel.send(embed)
     }
     
     if (pubgQueryFPP) {        
@@ -117,7 +128,7 @@ client.on('message', async msg => {
                 )
                 const embed = new RichEmbed()
                 .setTitle(`${name}'s TPP Stats (ONLY CURRENT SEASON)`)
-                .setColor(0xFF0000)
+                .setColor('0xFF0000')
                 .setDescription(message)
                 msg.channel.send(embed)
             } else {
@@ -129,23 +140,29 @@ client.on('message', async msg => {
     }
 
     if (msg.content.toLowerCase() === '!commands') {
-        msg.reply(
+
+        const message =
         `
         Commands
         - "brb" plays a sound in your current voice channel
         - "monster kill" plays a sound in your current voice channel
         `
-        )
+        const embed = new RichEmbed()
+        .setColor('0000FF')
+        .setDescription(message)
+
+        msg.channel.send(embed)
+    
     }
     
-    if (msg.content.toLowerCase() === 'brb' && msg.member.voiceChannel) {
+    if (msg.content.toLowerCase() === 'brb' && msg.member && msg.member.voiceChannel) {
         const connection = await msg.member.voiceChannel.join()
         connection.playFile('./illbeback.mp3')
     } else if (msg.content.toLowerCase() === 'brb') {
         msg.reply('See you later!')
     }
 
-    if (msg.content.toLowerCase() === 'monster kill') {
+    if (msg.content.toLowerCase() === 'monster kill' && msg.member && msg.member.voiceChannel) {
         const connection = await msg.member.voiceChannel.join()
         connection.playFile('./monsterkill.mp3')
     } else if (msg.content.toLowerCase() === 'monster kill') {

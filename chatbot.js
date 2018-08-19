@@ -63,7 +63,12 @@ client.on('message', async (msg) => {
                 Solo: ${playerInfo['solo-fpp'].wins} ==> ${playerInfo['solo-fpp'].ratio} win rate
                 Duo: ${playerInfo['duo-fpp'].wins} ==> ${playerInfo['duo-fpp'].ratio} win rate 
                 Squad: ${playerInfo['squad-fpp'].wins} ==> ${playerInfo['squad-fpp'].ratio} win rate
-                
+       
+                -----Kills-----
+                Solo: ${playerInfo['solo-fpp'].kills}
+                Duo: ${playerInfo['duo-fpp'].kills}
+                Squad: ${playerInfo['squad-fpp'].kills}
+         
                 -----Longest Kill-----
                 Solo: ${playerInfo.longestKills['solo-fpp']}
                 Duo: ${playerInfo.longestKills['duo-fpp']}
@@ -110,11 +115,16 @@ client.on('message', async (msg) => {
                 Revived teammates: ${playerInfo.lastMatch.revives} times
                 Was knocked down: ${playerInfo.lastMatch.knocks} times
 
-                -----Wins -----
+                -----Wins-----
                 Solo: ${playerInfo.solo.wins} ==> ${playerInfo.solo.ratio} win rate
                 Duo: ${playerInfo.duo.wins} ==> ${playerInfo.duo.ratio} win rate
                 Squad: ${playerInfo.squad.wins} ==> ${playerInfo.squad.ratio} win rate
-                
+
+                -----Kills-----
+                Solo: ${playerInfo.solo.kills}
+                Duo: ${playerInfo.duo.kills}
+                Squad: ${playerInfo.squad.kills}
+
                 -----Longest Kill-----
                 Solo: ${playerInfo.longestKills.solo}
                 Duo: ${playerInfo.longestKills.duo}

@@ -57,32 +57,38 @@ module.exports = async name => {
         solo: {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         'solo-fpp': {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         duo: {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         'duo-fpp': {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         squad: {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         'squad-fpp': {
             wins: 0,
             losses: 0,
-            ratio: 0
+            ratio: 0,
+            kills: 0
         },
         longestKills: {
             solo: 0,
@@ -124,6 +130,9 @@ module.exports = async name => {
                             }
                             if (statistic === 'losses') {
                                 playerInfo[gametype].losses = stats[gametype].losses
+                            }
+                            if (statistic === 'kills') {
+                                playerInfo[gametype].kills = stats[gametype].kills
                             }
                             const ratio = (playerInfo[gametype].wins/playerInfo[gametype].losses) || 0
                             const percent = Math.round(ratio * 100)

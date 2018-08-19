@@ -17,7 +17,7 @@ client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 })
 
-client.on('message', async msg => {
+client.on('message', async (msg) => {
 
     const pubgQueryFPP = msg.content.indexOf('!pubg') === 0 ? true : false
     const pubgQueryTPP = msg.content.indexOf('!TPPpubg') === 0 ? true : false

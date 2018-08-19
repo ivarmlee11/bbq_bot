@@ -135,7 +135,7 @@ module.exports = async name => {
                                 playerInfo[gametype].kills = stats[gametype].kills
                             }
                             const ratio = (playerInfo[gametype].wins/playerInfo[gametype].losses) || 0
-                            const percent = Math.round(ratio * 100)
+                            const percent = Math.round(num * 10000)/100
                             playerInfo[gametype].ratio = `${percent}%`
                             if (statistic === 'longestKill') {
                                 const longKill = Math.round(stats[gametype].longestKill * 100)/100

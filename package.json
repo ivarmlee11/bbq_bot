@@ -1,0 +1,20 @@
+{
+  "name": "discord-welcomer",
+  "version": "1.0.0",
+  "description": "Simple chatbot for a Discord channel that greets users as they enter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Ivar Lee",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "ffmpeg-binaries": "^4.0.0",
+    "jspubg": "^1.0.7",
+    "node-opus": "^0.3.0",
+    "request": "^2.87.0"
+  }
+}

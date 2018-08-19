@@ -8,7 +8,7 @@ module.exports = async name => {
         url: `https://api.pubg.com/shards/pc-na/players?filter[playerNames]=${name}`,
         headers: {
             'User-Agent': 'request',
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkZjliNmE4MC03ZTQxLTAxMzYtOWYzOS0zZjI5OTY0ZTI5MjQiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTMzODQ3MDEzLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImJicV9ib3QifQ.QjZIr5RbD2WyVtK0saSqD-oPxuU6FM3ZR3a8OQcqluM',
+            'Authorization': `Bearer ${process.env.PUBG_TOKEN}`,
             'Accept': 'application/vnd.api+json'
         }
     }

@@ -1,5 +1,4 @@
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
-console.log(process.env)
 
 const express = require('express')
 const app = express()
@@ -43,18 +42,25 @@ client.on('message', async (msg) => {
     if (pubgQueryFPP) {        
         const name = msg.content.split(':')[1]
         let playerInfo
+        let winner
+        let topTen
         try {
             if (name) {
                 playerInfo = await requestPlayerInfo(name)
+                winner = (playerInfo.lastMatch.winPlace === 1) ? true : false
+                topTen = (playerInfo.lastMatch.winPlace <= 10) ? true : false
+            
                 const message = (
                 `
                 
                 -----Last Match-----
+                ${winner ? 'YOU WON, BABY!' : ''} ${topTen ? 'YOU GOT ANOTHER TOP TEN, BABY!' : ''}
                 Match Type: ${playerInfo.lastMatch.gameType}
                 Placed: ${playerInfo.lastMatch.winPlace}
                 Longest Kill: ${playerInfo.lastMatch.longestKill} meters
                 Kills: ${playerInfo.lastMatch.kills}
                 Headshot Kills: ${playerInfo.lastMatch.headshotKills}
+                Damage Dealt: ${playerInfo.lastMatch.damageDealt}
                 Kill assists: ${playerInfo.lastMatch.assists}
                 Revived teammates: ${playerInfo.lastMatch.revives} times
                 Was knocked down: ${playerInfo.lastMatch.knocks} times
@@ -86,6 +92,15 @@ client.on('message', async (msg) => {
                 .setTitle(`${name}'s FPP Stats (ONLY CURRENT SEASON)`)
                 .setColor(0xFF0000)
                 .setDescription(message)
+
+                if(winner) {
+                    embed
+                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')
+                } else if (topTen) {
+                    embed
+                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')                  
+                }
+
                 msg.channel.send(embed)
 
             } else {
@@ -102,15 +117,20 @@ client.on('message', async (msg) => {
         try {
             if (name) {
                 playerInfo = await requestPlayerInfo(name)
+                winner = (playerInfo.lastMatch.winPlace === 1) ? true : false
+                topTen = (playerInfo.lastMatch.winPlace <= 10) ? true : false
+                
                 const message = (
                 `
                
-                -----Last Match -----
+                -----Last Match-----
+                ${winner ? 'YOU WON, BABY!' : ''} ${topTen ? 'YOU GOT ANOTHER TOP TEN, BABY!' : ''}
                 Match Type: ${playerInfo.lastMatch.gameType}
                 Placed: ${playerInfo.lastMatch.winPlace}
                 Longest Kill: ${playerInfo.lastMatch.longestKill} meters
                 Kills: ${playerInfo.lastMatch.kills}
                 Headshot Kills: ${playerInfo.lastMatch.headshotKills}
+                Damage Dealt: ${playerInfo.lastMatch.damageDealt}
                 Kill assists: ${playerInfo.lastMatch.assists}
                 Revived teammates: ${playerInfo.lastMatch.revives} times
                 Was knocked down: ${playerInfo.lastMatch.knocks} times
@@ -141,6 +161,15 @@ client.on('message', async (msg) => {
                 .setTitle(`${name}'s TPP Stats (ONLY CURRENT SEASON)`)
                 .setColor('0xFF0000')
                 .setDescription(message)
+                
+                if(winner) {
+                    embed
+                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')
+                } else if (topTen) {
+                    embed
+                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')                  
+                }
+
                 msg.channel.send(embed)
             } else {
                 msg.reply('Did you enter the player name correctly?')
@@ -180,7 +209,13 @@ client.on('message', async (msg) => {
         console.log('user not in voice channel (m kill)')
         msg.reply('M-M-M-M MONSTER KILLLLL')
     }
+    
+})
 
+client.on('guildMemberAdd', (member) => {
+    if (!channel) return
+    // Send the message, mentioning the member
+    channel.send(`Aye! ${member} has come to play.`)
 })
 
 client.login(process.env.BOT_TOKEN)

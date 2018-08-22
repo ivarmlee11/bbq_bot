@@ -106,15 +106,7 @@ module.exports = async name => {
             squad: 0,
             'squad-fpp': 0
         },
-        lastMatch: {
-            winPlace: 0,
-            longestKill: 0,
-            kills: 0,
-            assists: 0,
-            revives: 0,
-            knocks: 0,
-            gameType: ''
-        }
+        lastMatch: {}
     }
 
     const playerData = await new Promise((resolve, reject) => {
@@ -171,6 +163,7 @@ module.exports = async name => {
                         playerInfo.lastMatch.assists = val.attributes.stats.assists
                         playerInfo.lastMatch.revives = val.attributes.stats.revives
                         playerInfo.lastMatch.knocks = val.attributes.stats.DBNOs
+                        playerInfo.lastMatch.damageDealt = val.attributes.stats.damageDealt
                         playerInfo.lastMatch.gameType = info.data.attributes.gameMode
                     }
                 })
@@ -183,8 +176,6 @@ module.exports = async name => {
 
     playerInfo.currentSeason = currentSeason
     
-    console.log(playerInfo)
-
     return playerInfo
 
 }

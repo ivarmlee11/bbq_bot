@@ -12,6 +12,8 @@ app.get('/', (req, res) => {
     res.send(':D')
 })
 
+client.on('error', console.log(error))
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
@@ -175,7 +177,7 @@ client.on('message', async (msg) => {
                 msg.reply('Did you enter the player name correctly?')
             }
         } catch(error) {
-            msg.reply(error)
+            console.log(error)
         }       
     }
 

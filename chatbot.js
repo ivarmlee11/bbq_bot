@@ -12,18 +12,20 @@ app.get('/', (req, res) => {
     res.send(':D')
 })
 
-client.on('error', console.log(error))
-
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 })
 
-client.on('message', async (msg) => {
+client.on('error', (error) => {
+    console.log(error)
+})
 
+client.on('message', async (msg) => {
+    
     const pubgQueryFPP = msg.content.indexOf('!pubg') === 0 ? true : false
     const pubgQueryTPP = msg.content.indexOf('!TPPpubg') === 0 ? true : false
-
+    
     if (msg.content.toLowerCase() === 'help') {
         const message = 
         `

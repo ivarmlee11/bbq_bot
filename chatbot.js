@@ -98,7 +98,7 @@ client.on('message', async (msg) => {
                     .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')
                 } else if (topTen) {
                     embed
-                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')                  
+                    .setImage('https://recruitingdaily.com/wp-content/blogs.dir/6/2010/07/Top-10.jpg')                  
                 }
 
                 msg.channel.send(embed)
@@ -167,7 +167,7 @@ client.on('message', async (msg) => {
                     .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')
                 } else if (topTen) {
                     embed
-                    .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')                  
+                    .setImage('https://recruitingdaily.com/wp-content/blogs.dir/6/2010/07/Top-10.jpg')                  
                 }
 
                 msg.channel.send(embed)

@@ -163,7 +163,8 @@ module.exports = async name => {
                         playerInfo.lastMatch.assists = val.attributes.stats.assists
                         playerInfo.lastMatch.revives = val.attributes.stats.revives
                         playerInfo.lastMatch.knocks = val.attributes.stats.DBNOs
-                        playerInfo.lastMatch.damageDealt = val.attributes.stats.damageDealt
+                        const damage = Math.round(val.attributes.stats.damageDealt * 100)/100
+                        playerInfo.lastMatch.damageDealt = damage
                         playerInfo.lastMatch.gameType = info.data.attributes.gameMode
                     }
                 })

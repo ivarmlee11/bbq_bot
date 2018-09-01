@@ -217,9 +217,5 @@ client.on('message', async (msg) => {
     
 })
 
-client.on('guildMemberAdd', (member) => {
-    msg.channel.send(`Aye! ${member} has come to play.`)
-})
-
 client.login(process.env.BOT_TOKEN)
 app.listen(PORT, () => console.log(`express server listening on port: ${PORT}`))

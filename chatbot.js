@@ -161,12 +161,13 @@ client.on('message', async (msg) => {
                 
                 `
                 )
+
                 const embed = new RichEmbed()
                 .setTitle(`${name}'s TPP Stats (ONLY CURRENT SEASON)`)
                 .setColor('0xFF0000')
                 .setDescription(message)
                 
-                if(winner) {
+                if (winner) {
                     embed
                     .setImage('https://static.shoplightspeed.com/shops/608321/files/004603116/merrick-merrick-can-dog-food-chunky-colossal-chick.jpg')
                 } else if (topTen) {
@@ -217,9 +218,7 @@ client.on('message', async (msg) => {
 })
 
 client.on('guildMemberAdd', (member) => {
-    if (!channel) return
-    // Send the message, mentioning the member
-    channel.send(`Aye! ${member} has come to play.`)
+    msg.channel.send(`Aye! ${member} has come to play.`)
 })
 
 client.login(process.env.BOT_TOKEN)

@@ -52,7 +52,7 @@ client.on('message', async (msg) => {
             if (name) {
                 playerInfo = await requestPlayerInfo(name)
                 winner = (playerInfo.lastMatch.winPlace === 1) ? true : false
-                topTen = (playerInfo.lastMatch.winPlace <= 10) ? true : false
+                topTen = (playerInfo.lastMatch.winPlace <= 10 && playerInfo.lastMatch.winPlace > 1) ? true : false
             
                 const message = (
                 `
@@ -67,7 +67,7 @@ client.on('message', async (msg) => {
                 Damage Dealt: ${playerInfo.lastMatch.damageDealt}
                 Kill assists: ${playerInfo.lastMatch.assists}
                 Revived teammates: ${playerInfo.lastMatch.revives} times
-                Was knocked down: ${playerInfo.lastMatch.knocks} times
+                Knocked down enemies: ${playerInfo.lastMatch.knocks} times
                 
                 -----Wins-----
                 Solo: ${playerInfo['solo-fpp'].wins} ==> ${playerInfo['solo-fpp'].ratio} win rate
@@ -137,7 +137,7 @@ client.on('message', async (msg) => {
                 Damage Dealt: ${playerInfo.lastMatch.damageDealt}
                 Kill assists: ${playerInfo.lastMatch.assists}
                 Revived teammates: ${playerInfo.lastMatch.revives} times
-                Was knocked down: ${playerInfo.lastMatch.knocks} times
+                Knocked down enemies: ${playerInfo.lastMatch.knocks} times
 
                 -----Wins-----
                 Solo: ${playerInfo.solo.wins} ==> ${playerInfo.solo.ratio} win rate

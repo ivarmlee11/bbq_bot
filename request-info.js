@@ -134,7 +134,6 @@ module.exports = async name => {
                                 playerInfo.longestKills[gametype] = `${longKill} meters`
                             }
                             if (statistic === 'dBNOs') playerInfo.totalKnocks[gametype] = `${stats[gametype].dBNOs} enemies knocked down`
-                            if (statistic === 'losses') playerInfo.totalKnocks[gametype] = `${stats[gametype].dBNOs} enemies knocked down`
                         }
                     }
                 }

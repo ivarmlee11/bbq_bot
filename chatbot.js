@@ -11,7 +11,7 @@ client.on('ready', () => {
     console.log(client.user)
 })
 
-client.on('error', () => { 
+client.on('error', (error) => {
     console.log(error)
 })
 

@@ -11,8 +11,6 @@ client.on('ready', () => {
     console.log(client.user)
 })
 
-client.on('error', console.log(error))
-
 client.on('message', eventListeners.handleMessage)
 
 client.login(process.env.BOT_TOKEN)

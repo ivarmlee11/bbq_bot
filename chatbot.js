@@ -11,9 +11,7 @@ client.on('ready', () => {
     console.log(client.user)
 })
 
-client.on('error', (error) => {
-    console.log(error)
-})
+client.on('error', console.log(error))
 
 client.on('message', eventListeners.handleMessage)
 

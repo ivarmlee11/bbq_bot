@@ -89,6 +89,7 @@ module.exports = {
 
                 }
             } catch(error) {
+                console.log(error)
                 msg.reply(error)
             }
         }
@@ -157,6 +158,7 @@ module.exports = {
                 }
             } catch(error) {
                 console.log(error)
+                msg.reply(error)
             }       
         }
     }
